@@ -9,6 +9,7 @@ public class World{
         this.longueur = longueur;
         this.largeur = largeur;
         this.agents = new ArrayList<>();
+        this.marche=new Marche();
     }
     public boolean isValidPosition(int x, int y) {
         return x >= 0 && x < longueur && y >= 0 && y < largeur;

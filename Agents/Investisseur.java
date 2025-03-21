@@ -10,11 +10,12 @@ public class Investisseur extends Agent{
         this.capital=capital;
      }
      public void update(){
-        move();
+       // move();
         OffreInvestissement meilleurOffre=world.getMarche().trouverMeilleurOffre();
         if(meilleurOffre !=null){
             investir(meilleurOffre);
         }
+        this.move();
      }
      public void investir(OffreInvestissement offre){
         int quanteAchetable=capital/offre.prixAction;

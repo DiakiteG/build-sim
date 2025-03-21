@@ -14,7 +14,13 @@ public class Entreprise extends Agent{
     public int getTaille(){
         return 5+(capital/1000);
     }
+
+
     public void update(){
 
+    }
+    
+    public OffreInvestissement creerOffre(){
+        return new OffreInvestissement(this,prixAction,stockActions);
     }
 }

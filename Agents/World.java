@@ -3,6 +3,7 @@ public class World{
     public int longueur;
     public int largeur;
     public ArrayList<Agent> agents;
+    private Marche marche;
 
      public World(int longueur, int largeur) {
         this.longueur = longueur;
@@ -28,8 +29,30 @@ public class World{
         agent.update();
     }
  }
+
  public ArrayList<Agent> getAgents() {
         return agents;
     }
 
+
+
+public void ajouterOffreEntreprises(){
+    for(Agent a:agents){
+        if(a instanceof Entreprise){
+            marche.ajouterOffre(((Entreprise)a).creerOffre());
+        }
+    }
+}
+
+public Marche getMarche(){
+    return marche;
+}
+
+public void updatew(){
+    ajouterOffreEntreprises();
+    for(Agent a:agents){
+        a.update();
+}
+
+}
 }

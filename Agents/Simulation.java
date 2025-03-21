@@ -13,11 +13,11 @@ public static void main(String [] args){
     frame.setVisible(true);
 
     for (int i = 0; i < 50; i++) {
-            w.addAgent(new Entreprise(w, (int) (Math.random() * longueur), (int) (Math.random() * largeur),(int) (Math.random() * 1000)));
+            w.addAgent(new Entreprise(w, (int) (Math.random() * longueur), (int) (Math.random() * largeur),(int) (Math.random() * 10000)));
         }
 
         for (int i = 0; i < 80; i++) {
-            w.addAgent(new Investisseur(w, (int) (Math.random() * longueur), (int) (Math.random() * largeur),(int) (Math.random() * 1000)));
+            w.addAgent(new Investisseur(w, (int) (Math.random() * longueur), (int) (Math.random() * largeur),(int) (Math.random() * 10000)));
             //new Investisseur(w, (int) (Math.random() * longueur), (int) (Math.random() * largeur),(int) (Math.random() * 1000)).seDeplacer();
         }
 

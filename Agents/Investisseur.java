@@ -19,10 +19,11 @@ public class Investisseur extends Agent{
        // int quanteAchetable=capital/offre.getPrixAction();
      //}
      public int getTaille(){
-        return 5+(capital/500);
+        return 5+(capital/1000);
      }
      public void update(){
-        seDeplacer();
+        //seDeplacer();
+        move();
      }
      public void seDeplacer(){
                  Random random = new Random();

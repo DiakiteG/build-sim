@@ -12,9 +12,9 @@ public class Entreprise extends Agent{
         this.capital=capital;
     }
     public int getTaille(){
-        return 5+(stockActions/20);
+        return 5+(capital/1000);
     }
     public void update(){
-        
+
     }
 }

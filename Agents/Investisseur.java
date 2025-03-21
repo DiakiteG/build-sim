@@ -5,6 +5,7 @@ import java.util.Random;
 public class Investisseur extends Agent{
      private ArrayList<Action> portefeuille=new ArrayList<>();
      private int capital;
+
      public Investisseur(World world,int x,int y, int capital){
         super(world,x,y,0,0,255);
         this.capital=capital;
@@ -15,8 +16,23 @@ public class Investisseur extends Agent{
         if(meilleurOffre !=null){
             investir(meilleurOffre);
         }
+        //this.move();
+        if (capital < 100) {
+            world.transformerEnTrader(this);
+            return;
+        }
+
+        if (Math.random() > 4) { // Si l'investisseur possède beaucoup d'actions, il se rapproche des entreprises
+            Entreprise entrepriseProche = trouverEntrepriseProche();
+            if (entrepriseProche != null) {
+                deplacerVers(entrepriseProche.getX(), entrepriseProche.getY());
+                return;
+            }
+        }
+
         this.move();
-     }
+    }
+     
      public void investir(OffreInvestissement offre){
         int quanteAchetable=capital/offre.prixAction;
         if(quanteAchetable > offre.quantite ){
@@ -84,4 +100,24 @@ public class Investisseur extends Agent{
 		        break;        
 		}
     	}
+
+private Entreprise trouverEntrepriseProche() {
+        Entreprise plusProche = null;
+        double distanceMin = Double.MAX_VALUE;
+
+        for (Agent agent : world.getAgents()) {
+            if (agent instanceof Entreprise) {
+                Entreprise entreprise = (Entreprise) agent;
+                double distance = Math.sqrt(Math.pow(x - entreprise.getX(), 2) + Math.pow(y - entreprise.getY(), 2));
+
+                if (distance < distanceMin) {
+                    distanceMin = distance;
+                    plusProche = entreprise;
+                }
+            }
+        }
+        return plusProche;
+    }
+
+
 }

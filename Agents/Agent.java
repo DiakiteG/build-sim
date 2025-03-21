@@ -35,5 +35,11 @@ public abstract class Agent {
     public int getColorR() { return r; }
     public int getColorG() { return g; }
     public int getColorB() { return b; }
+    public void deplacerVers(int cibleX, int cibleY) {
+        if (x < cibleX) x++;
+        else if (x > cibleX) x--;
+        if (y < cibleY) y++;
+        else if (y > cibleY) y--;
+    }
 
 }

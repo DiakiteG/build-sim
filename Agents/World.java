@@ -1,9 +1,12 @@
 import java.util.ArrayList;
+import java.util.Random;
 public class World{
     public int longueur;
     public int largeur;
     public ArrayList<Agent> agents;
     private Marche marche;
+    private boolean crise=false;
+    private Random r=new Random();
 
      public World(int longueur, int largeur) {
         this.longueur = longueur;
@@ -56,4 +59,34 @@ public void updatew(){
 }
 
 }
+
+public void declelencherCrise(){
+    crise=true;
+    System.out.println(" ⚠️ CRISE BOURSIÈRE ");
+    for(int i=0 ;i<3 ;i++){
+        addAgent(new Speculateur(this,(int)Math.random()*longueur,(int)Math.random()*largeur));
+    }
+    for(int i=0 ;i<3 ;i++){
+        addAgent(new Regulateur(this,(int)Math.random()*longueur,(int)Math.random()*largeur));
+    }
+}
+
+public void transformerEnTrader(Investisseur investisseur) {
+        agents.remove(investisseur);
+        addAgent(new Trader(this, investisseur.getX(), investisseur.getY(),(int)Math.random()*1000));
+    }
+
+
+
+public Speculateur trouverSpeculateur() {
+    for (Agent agent : agents) {
+        if (agent instanceof Speculateur) {
+            return (Speculateur) agent; 
+        }
+    }
+    return null; 
+}
+
+
+
 }
